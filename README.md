@@ -15,8 +15,7 @@ In addition, this project will include:
 *
 
 ## Wireframes
-
-https://wireframe.cc/uSv1kJ
+![Image of Wireframe](https://i.gyazo.com/2672b07485199d22633d9519199822fe.png)
 
 
 ## Technologies, Libraries, APIs
