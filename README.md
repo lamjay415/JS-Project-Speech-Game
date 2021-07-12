@@ -32,8 +32,8 @@ In addition, this project will include:
 
 ## Implementation Timeline
 
-* Day 1: Create class objects and UI outline
-* Day 2: Complete game logic and visuals with basic keyboard controls
+* Day 1: Create class objects, html structure, basic css styling
+* Day 2: Complete game logic and UI with basic keyboard controls
 * Day 3: Implement voice control functionality with Web speech API
 * Day 4: Bug fixes, UI enhancements, GitHub deploy
 
