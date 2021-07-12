@@ -1,22 +1,27 @@
-import GameObject from "./game_objects";
-
+// import GameObject from "./game_objects";
+import FallingObject from "./falling_object";
+import MainObject from "./main_object";
 class Game{
-
+    
     constructor(){
         this.DIMX = 600;
         this.DIMY = 800;
         this.objs = [];
+        this.main_obj = new MainObject();
+        this.objs.push(this.main_obj);
+        this.checkInput();
     }
 
     randomPos(){
-        let x = this.DIMX * Math.random();
-        let y = -this.DIMY * 4 * Math.random();
+        let width = [60,180,300,420,540];
+        let x = width[Math.floor(Math.random()*width.length)];
+        let y = -this.DIMY * 1.5 * Math.random() + 100;
         return [x,y]
     }
 
     createObjs(count){
         for( ; count > 0 ; count--){
-            this.objs.push(new GameObject(this.randomPos(),5));
+            this.objs.push(new FallingObject(this.randomPos(),5));
         }
     }
 
@@ -24,7 +29,7 @@ class Game{
         el.pos = this.randomPos();
     }
     moveObjects(){
-        this.objs.forEach(el => el.fall());
+        this.objs.forEach(el => el.move());
     }
 
     draw(ctx){
@@ -37,12 +42,21 @@ class Game{
             }
         });
     }
+
     start(ctx){
         setInterval(() => {
             this.draw(ctx);
             this.moveObjects();
+            // this.checkInput();
         },20);
         
     }
+
+    checkInput(){
+        document.addEventListener("keydown", (e) => {
+            this.main_obj.move(e.key);
+        });
+    }
+
 }
 export default Game; 

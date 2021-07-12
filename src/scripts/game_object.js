@@ -1,10 +1,8 @@
 class GameObject{
 
     constructor(pos,speed){
-        this.color = "#000000";
         this.speed = speed;
         this.pos = pos;
-        this.radius = 10;
     }
 
     draw(ctx){
@@ -14,10 +12,6 @@ class GameObject{
             this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
           );
         ctx.fill();
-    }
-
-    fall(){
-        this.pos[1] += this.speed;
     }
     
 }
