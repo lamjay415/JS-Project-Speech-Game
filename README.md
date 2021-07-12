@@ -12,6 +12,7 @@ In this project, users will be able to:
 
 In addition, this project will include:
 
+* Visuals for user input for the controls
 * An About modal describing the background and rules of the game
 * A production README
 
