@@ -1,0 +1,17 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+body {
+  background-color: aquamarine;
+}
+
+.container {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  margin-top: 75px;
+}
+
+canvas {
+  background-color: azure;
+}

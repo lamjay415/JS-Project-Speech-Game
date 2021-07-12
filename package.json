@@ -1,0 +1,36 @@
+{
+  "name": "JS-Project-Speech-Game",
+  "version": "1.0.0",
+  "description": "The goal of this project is to utilize Javascript's Web Speech API to detect user inputs to give instructions to our APP. The user will have to enable mic access on their browser to play the game. The idea is have a dodging game where the player uses their voice to tell the character to move left, right, up, and down with an option to play using their keyboard.",
+  "main": "index.js",
+  "browserslist": [
+    "defaults"
+  ],"scripts": {
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamjay415/JS-Project-Speech-Game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lamjay415/JS-Project-Speech-Game/issues"
+  },
+  "homepage": "https://github.com/lamjay415/JS-Project-Speech-Game#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.15.2",
+    "css-loader": "^5.2.6",
+    "mini-css-extract-plugin": "^2.1.0",
+    "regenerator-runtime": "^0.13.7",
+    "sass": "^1.35.2",
+    "sass-loader": "^12.1.0",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2"
+  }
+}
