@@ -7,6 +7,8 @@ class FallingObject extends GameObject{
         this.color = "#000000";
         this.radius = 35;
         this.speed = 5;
+        let randRock = "rock" + Math.floor(Math.random() * 4 + 1).toString();
+        this.img = document.getElementById(randRock);
     }
 
     move(){
@@ -20,11 +22,11 @@ class FallingObject extends GameObject{
             this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
           );
         ctx.fill();
-        const img = document.getElementById('rock');
-        ctx.drawImage(img,this.pos[0]-50,this.pos[1]-50,100,100);
+        // const img = document.getElementById(`rock${randRock}`);
+        ctx.drawImage(this.img,this.pos[0]-75,this.pos[1]-75,150,150);
         }
 
-        
+
 }
 
 export default FallingObject;

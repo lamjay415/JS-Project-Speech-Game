@@ -7,7 +7,7 @@ class MainObject extends GameObject{
     constructor(){
         super();
         this.color = "#C8472B"
-        this.radius = 75;
+        this.radius = 85;
         this.pos = [300,750];
         this.speed = 120;
     }
