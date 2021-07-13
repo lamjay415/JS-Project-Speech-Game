@@ -1,6 +1,8 @@
 import GameObject from "./game_object";
 
 class MainObject extends GameObject{
+    
+    static hippo_src = 'standing_hippo';
 
     constructor(){
         super();
@@ -8,6 +10,17 @@ class MainObject extends GameObject{
         this.radius = 75;
         this.pos = [300,750];
         this.speed = 120;
+    }
+
+    draw(ctx){
+        // ctx.fillStyle = this.color;
+        // ctx.beginPath();
+        // ctx.arc(
+        //     this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
+        //   );
+        // ctx.fill();
+        const img = document.getElementById(MainObject.hippo_src);
+        ctx.drawImage(img,this.pos[0]-100,this.pos[1]-155,250,250);
     }
 
     move(dir){
@@ -20,6 +33,8 @@ class MainObject extends GameObject{
                 setTimeout(()=>{
                     document.getElementById('a').classList.remove('pressed');
                 },400)
+                MainObject.hippo_src = 'left_hippo';
+                setTimeout( this.switch_default_src, 300);
                 break;
             case 'd':
                 if(this.pos[0] !== 540){
@@ -29,8 +44,13 @@ class MainObject extends GameObject{
                 setTimeout(()=>{
                     document.getElementById('d').classList.remove('pressed');
                 },400)
+                MainObject.hippo_src = 'right_hippo';
+                setTimeout( this.switch_default_src, 300);
                 break;
         }
+    }
+    switch_default_src(){
+        MainObject.hippo_src = 'standing_hippo';
     }
 }
 

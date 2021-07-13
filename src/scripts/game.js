@@ -2,7 +2,8 @@
 import FallingObject from "./falling_object";
 import MainObject from "./main_object";
 class Game{
-    
+    static hit_pos = [];
+    static hit = false;
     constructor(ctx){
         this.DIMX = 600;
         this.DIMY = 800;
@@ -42,6 +43,10 @@ class Game{
     draw(){
         this.ctx.clearRect(0, 0, this.DIMX, this.DIMY);
         this.objs.forEach(el => {
+            // if(el instanceof MainObject){
+            //     el.draw(this.ctx,src);
+            // }
+            // else 
             if(el.pos[1] < 900) {
                 el.draw(this.ctx)
             }else{
@@ -83,16 +88,32 @@ class Game{
 
     checkCollision(){
         for(let i = 1; i < this.objs.length; i++){
-            if(this.main_obj.collideWith(this.objs[i])){
+            let rock = this.objs[i];
+            if(this.main_obj.collideWith(rock)){
                 console.log('Hit!');
                 this.lives--;
-                this.resetPos(this.objs[i])
+                this.resetPos(rock)
                 let doc_lives = document.getElementById('lives');
                 doc_lives.innerText = this.lives;
+                Game.hit_pos = rock.pos;
+                Game.hit = true;
+                // console.log(Game.hit_pos);
+                // if(Game.hit){
+                this.hit_marker(Game.hit_pos);
+                //     setTimeout(()=>{
+                //         Game.hit = false;
+                //     },300);
+                // }
                 return true;
             }
         }
         return false;
+    }
+
+    hit_marker(pos){
+        console.log(pos);
+        const img = document.getElementById('hit_marker');
+        this.ctx.drawImage(img,pos[0],pos[1],100,100);
     }
 
     increaseDifficulty(){

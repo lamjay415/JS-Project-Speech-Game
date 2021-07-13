@@ -8,9 +8,26 @@ body {
   margin-top: 75px;
 }
 
+#game_container {
+  position: relative;
+}
+
 canvas {
-  background-color: azure;
-  background: url("../src/png/background.png");
+  // background-color: azure;
+  // background: url("../src/png/background.png");
+  opacity: 1;
+  position: absolute;
+  left: -300px;
+}
+
+#background {
+  width: 600px;
+  height: 800px;
+  position: absolute;
+  left: -300px;
+  // left: 90px;
+  // position: relative;
+  // z-index: -1;
 }
 
 #scoreboard {
@@ -49,4 +66,10 @@ button:hover {
   margin-top: 300px;
   text-align: center;
   margin-right: 50px;
+}
+div + p {
+  font-family: "Dank Mono", ui-monospace, monospace;
+}
+#scoreboard p {
+  color: aliceblue;
 }

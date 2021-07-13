@@ -23,6 +23,8 @@ class FallingObject extends GameObject{
         const img = document.getElementById('rock');
         ctx.drawImage(img,this.pos[0]-50,this.pos[1]-50,100,100);
         }
+
+        
 }
 
 export default FallingObject;
