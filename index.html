@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <img id = "rock" src = "src/png/rock.png" hidden>
     <div class = 'container'>
         <div class = 'left'>
             <div id = 'about'>About</div>
@@ -18,9 +19,13 @@
         </div>
         <canvas id='canvas' height = '800', width = '600'></canvas>
         <div class = 'right'>
-            <div id = 'score'>Score</div>
-            <div id = 'lives'>Lives</div>
-            <div id = 'controls'>Controls</div>
+            <div class = 'score'>Score</div><p class = 'score' id = 'score'>0</p>
+            <div class = 'lives'>Lives</div><p class = 'score' id = 'lives'>3</p>
+            <div id = 'controls'>Controls
+                <button id = 'a'>A</button>
+                <button id = 'd'>D</button>
+            </div>
+            
         </div>
     </div>
 </body>

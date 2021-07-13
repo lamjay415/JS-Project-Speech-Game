@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const canvasEl = document.getElementById('canvas');
   
     const ctx = canvasEl.getContext("2d");
-    const game = new Game();
-    console.log(game.objs);
-    game.createObjs(3);
-    game.start(ctx);
+    const game = new Game(ctx);
+    // console.log(game.objs);
+    // game.createObjs(3);
+    game.startScreen();
 });

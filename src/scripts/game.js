@@ -3,12 +3,16 @@ import FallingObject from "./falling_object";
 import MainObject from "./main_object";
 class Game{
     
-    constructor(){
+    constructor(ctx){
         this.DIMX = 600;
         this.DIMY = 800;
+        this.ctx = ctx;
+        this.lives = 3;
+        this.score = 0;
         this.objs = [];
         this.main_obj = new MainObject();
         this.objs.push(this.main_obj);
+        this.createObjs(3);
         this.checkInput();
     }
 
@@ -21,35 +25,54 @@ class Game{
 
     createObjs(count){
         for( ; count > 0 ; count--){
-            this.objs.push(new FallingObject(this.randomPos(),5));
+            this.objs.push(new FallingObject(this.randomPos()));
         }
     }
 
     resetPos(el){
         el.pos = this.randomPos();
     }
+
     moveObjects(){
-        this.objs.forEach(el => el.move());
+        this.objs.forEach(el => {
+            el.move();
+        });
     }
 
-    draw(ctx){
-        ctx.clearRect(0, 0, this.DIMX, this.DIMY);
+    draw(){
+        this.ctx.clearRect(0, 0, this.DIMX, this.DIMY);
         this.objs.forEach(el => {
             if(el.pos[1] < 900) {
-                el.draw(ctx)
+                el.draw(this.ctx)
             }else{
                 this.resetPos(el);
             }
         });
     }
 
-    start(ctx){
-        setInterval(() => {
-            this.draw(ctx);
+    start(){
+        let gameInterval = setInterval(() => {
+            this.draw(this.ctx);
             this.moveObjects();
+            this.checkCollision();
+            if(this.gameOver()){
+                clearInterval(gameInterval);
+            }
             // this.checkInput();
         },20);
         
+        let scoreInterval = setInterval(() =>{
+            let doc_score = document.getElementById('score');
+            // this.score++;
+            doc_score.innerText = ++this.score;
+            if(this.gameOver()){
+                clearInterval(scoreInterval);
+                this.gameOverDisplay();
+            }
+            if(doc_score.innerText % 15 === 0){
+                this.increaseDifficulty();
+            }
+        },1000)
     }
 
     checkInput(){
@@ -58,5 +81,79 @@ class Game{
         });
     }
 
+    checkCollision(){
+        for(let i = 1; i < this.objs.length; i++){
+            if(this.main_obj.collideWith(this.objs[i])){
+                console.log('Hit!');
+                this.lives--;
+                this.resetPos(this.objs[i])
+                let doc_lives = document.getElementById('lives');
+                doc_lives.innerText = this.lives;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    increaseDifficulty(){
+        this.objs.push(new FallingObject(this.randomPos()));
+        for(let i = 1; i < this.objs.length; i++){
+            this.objs[i].speed += 2;
+        }
+    }
+
+    gameOver(){
+        if(this.lives <= 0){
+            console.log('GAME OVER!');
+            return true;
+        }
+        return false;
+    }
+
+    gameOverDisplay(){
+        let doc_container = document.querySelector('.container');
+        let scoreboard = document.createElement('div');
+        scoreboard.setAttribute('id', 'scoreboard');
+        let score = document.createElement('p');
+        score.innerText = `Your Final Score: ${this.score}`;
+        let restartButton = document.createElement('button');
+        restartButton.innerText = "Play Again"
+        restartButton.setAttribute('id', 'restart');
+        restartButton.addEventListener('click', (e) =>{
+            this.resetGame();
+            this.start();
+        });
+        scoreboard.append(score);
+        scoreboard.append(restartButton);
+        doc_container.append(scoreboard);
+    }
+
+    resetGame(){
+        let scoreboard = document.getElementById('scoreboard');
+        scoreboard.remove();
+        this.ctx.clearRect(0, 0, this.DIMX, this.DIMY);
+        this.lives = 3;
+        document.getElementById('lives').innerText = this.lives;
+        this.score = 0;
+        document.getElementById('score').innerText = this.score;
+        this.objs = [];
+        this.main_obj = new MainObject();
+        this.objs.push(this.main_obj);
+        this.createObjs(3);
+    }
+
+    startScreen(){
+        let doc_container = document.querySelector('.container');
+        let startScreen = document.createElement('div');
+        startScreen.setAttribute('class', 'start');
+        let playButton = document.createElement('button');
+        playButton.innerHTML = 'Play Game!'
+        playButton.addEventListener('click', (e) =>{
+            this.start();
+            startScreen.remove();
+        })
+        startScreen.append(playButton);
+        doc_container.append(startScreen);
+    }
 }
 export default Game; 

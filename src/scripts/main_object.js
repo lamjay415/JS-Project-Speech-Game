@@ -16,11 +16,19 @@ class MainObject extends GameObject{
                 if(this.pos[0] !== 60){
                     this.pos[0] -= 120;
                 }
+                document.getElementById('a').classList.add('pressed');
+                setTimeout(()=>{
+                    document.getElementById('a').classList.remove('pressed');
+                },400)
                 break;
             case 'd':
                 if(this.pos[0] !== 540){
                     this.pos[0] += 120;
                 }
+                document.getElementById('d').classList.add('pressed');
+                setTimeout(()=>{
+                    document.getElementById('d').classList.remove('pressed');
+                },400)
                 break;
         }
     }
