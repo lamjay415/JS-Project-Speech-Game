@@ -5,7 +5,7 @@ class FallingObject extends GameObject{
     constructor(pos){
         super(pos);
         this.color = "#000000";
-        this.radius = 35;
+        this.radius = 30;
         this.speed = 5;
         let randRock = "rock" + Math.floor(Math.random() * 5 + 1).toString();
         this.img = document.getElementById(randRock);

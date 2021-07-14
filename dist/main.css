@@ -86,8 +86,10 @@ div + p {
 }
 
 #voice_img {
+  display: none;
+  margin-left: 35%;
+  margin-right: auto;
   padding-top: 125px;
-  padding-left: 350px;
 }
 
 #scoreboard p {

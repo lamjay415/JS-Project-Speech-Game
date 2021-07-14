@@ -3,7 +3,7 @@ const SpeechGrammarList = webkitSpeechGrammarList;
 const SpeechRecognitionEvent = webkitSpeechRecognitionEvent;
 
 class SpeechListener extends SpeechRecognition{
-    static inputs = ['left', 'right'];
+    static inputs = ['left', 'right', 'down'];
     static grammar = '#JSGF V1.0; grammar input; public <input> = ' + SpeechListener.inputs.join(' | ') + ' ;'
     static resultCounter = 0;
     constructor(){
@@ -20,12 +20,12 @@ class SpeechListener extends SpeechRecognition{
     processInput(transcript){
         let left = ['left','love','laugh'];
         //let right = ['right', 'alright','what'];
-        if(transcript.includes('r') || transcript.includes('w')){
+        if(transcript.includes('d')){
+            return 's';
+        } else if(transcript.includes('r') || transcript.includes('w')){
             return 'd';
         }else if(transcript.includes('l') || left.includes(transcript)){
             return 'a';
-        }else if(transcript.includes('d')){
-            return 's';
         }
     }
 
