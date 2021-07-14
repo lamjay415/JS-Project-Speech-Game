@@ -96,17 +96,17 @@ class Game{
 
     checkVoiceInput(){
         Game.recognition.start();
-        console.log('started');
+        let input = "";
         Game.recognition.onresult = (e) =>{
-            console.log('start:' + Game.voiceCounter);
-            console.log(e.results);
-            if(e.results[Game.voiceCounter][0] !== undefined){
-                let input = e.results[Game.voiceCounter][0].transcript;
+            if(typeof e.results[Game.voiceCounter] !== 'undefined'){
+                let img = document.getElementById('voice_img');
+                img.removeAttribute('hidden');
+                setTimeout( () => img.setAttribute('hidden','true'), 750);
+                input = e.results[Game.voiceCounter][0].transcript;
+                console.log(input);
                 let dir = Game.recognition.processInput(input);
                 this.main_obj.move(dir);
                 Game.voiceCounter++;
-                console.log('end: ' + Game.voiceCounter);
-                sleep(500);
             }
         };
     }

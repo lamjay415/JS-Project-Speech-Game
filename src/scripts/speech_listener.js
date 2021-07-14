@@ -19,8 +19,8 @@ class SpeechListener extends SpeechRecognition{
 
     processInput(transcript){
         let left = ['left','love','laugh'];
-        let right = ['right', 'alright','what'];
-        if(transcript.includes('r') || right.includes(transcript)){
+        //let right = ['right', 'alright','what'];
+        if(transcript.includes('r') || transcript.includes('w')){
             return 'd';
         }else if(transcript.includes('l') || left.includes(transcript)){
             return 'a';
