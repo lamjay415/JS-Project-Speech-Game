@@ -1,5 +1,6 @@
 // import GameObject from "./game_objects";
 import FallingObject from "./falling_object";
+import FlyingObject from "./flying_object";
 import MainObject from "./main_object";
 import SpeechListener from "./speech_listener";
 
@@ -9,6 +10,7 @@ class Game{
     static voiceCounter = 0;
     static mode = '';
     static recognition = new SpeechListener();
+    static level = 1;
     constructor(ctx){
         this.DIMX = 600;
         this.DIMY = 800;
@@ -113,10 +115,13 @@ class Game{
 
     checkCollision(){
         for(let i = 1; i < this.objs.length; i++){
-            if(this.main_obj.collideWith(this.objs[i])){
+            if(this.main_obj.collideWith(this.objs[i]) && this.objs[i].pos[1] < 750){
+                let canvas = document.getElementById('canvas');
+                canvas.classList.add('apply-shake');
+                setTimeout(() => canvas.classList.remove('apply-shake'),750);
                 let rock = this.objs[i];
-                console.log('Hit!');
                 this.lives--;
+                console.log(rock.pos);
                 this.resetPos(rock)
                 let doc_lives = document.getElementById('lives');
                 doc_lives.innerText = this.lives;
@@ -136,7 +141,11 @@ class Game{
     increaseDifficulty(){
         this.objs.push(new FallingObject(this.randomPos()));
         for(let i = 1; i < this.objs.length; i++){
+            Game.level++;
             this.objs[i].speed += 2;
+            // if(Game.level > 3){
+            //     this.objs.push(new FlyingObject(this.randomPos()));
+            // }
         }
     }
 
@@ -145,7 +154,6 @@ class Game{
             if(Game.mode === 'voice'){
                 Game.recognition.stop();
             }
-            console.log('GAME OVER!');
             return true;
         }
         return false;
@@ -193,8 +201,11 @@ class Game{
         startScreen.setAttribute('class', 'start');
         let voicePlay = document.createElement('button');
         let keyPlay = document.createElement('button');
-        keyPlay.innerHTML = 'Keyboard Mode'
-        voicePlay.innerHTML = 'Voice Mode'
+        keyPlay.innerHTML = 'Keyboard'
+        let pTag = document.createElement('p');
+        pTag.innerHTML = 'or';
+
+        voicePlay.innerHTML = 'Voice'
         keyPlay.addEventListener('click', (e) =>{
             Game.mode = 'key';
             this.checkKeyInput();
@@ -208,6 +219,7 @@ class Game{
             startScreen.remove();
         });
         startScreen.append(voicePlay);
+        startScreen.append(pTag);
         startScreen.append(keyPlay);
         doc_container.append(startScreen);
     }

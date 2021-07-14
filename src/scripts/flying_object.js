@@ -1,14 +1,14 @@
 import GameObject from "./game_object";
 
-class FallingObject extends GameObject{
+class FlyingObject extends GameObject{
 
     constructor(pos){
         super(pos);
         this.color = "#000000";
-        this.radius = 35;
-        this.speed = 5;
-        let randRock = "rock" + Math.floor(Math.random() * 5 + 1).toString();
-        this.img = document.getElementById(randRock);
+        this.radius = 15;
+        this.speed = 3;
+        
+        this.img = document.getElementById('leaf');
     }
 
     move(){
@@ -26,7 +26,6 @@ class FallingObject extends GameObject{
         ctx.drawImage(this.img,this.pos[0]-75,this.pos[1]-75,150,150);
         }
 
-
 }
 
-export default FallingObject;
+export default FlyingObject;

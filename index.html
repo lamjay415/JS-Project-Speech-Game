@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
-    <title>Falling Game</title>
+    <title>Run Hippo Run</title>
 </head>
 
 <body>
@@ -15,14 +15,28 @@
     <img id = "rock2" src = "src/png/rock2.png" hidden>
     <img id = "rock3" src = "src/png/rock3.png" hidden>
     <img id = "rock4" src = "src/png/rock4.png" hidden>
-    <img id = "standing_hippo" src = "src/png/standing_hippo.png" hidden>
+    <img id = "rock5" src = "src/png/rock5.png" hidden>
+    <!-- <img id = "leaf" src = "src/png/leaf.png" hidden> -->
     <img id = "hit_marker" src = "src/png/hit.png" hidden>
+    <img id = "standing_hippo" src = "src/png/standing_hippo.png" hidden>
+    <img id = "standing_hippo2" src = "src/png/standing_hippo2.png" hidden>
+    <img id = "down_hippo" src = "src/png/down_hippo.png" hidden>
     <img id = "left_hippo" src = "src/png/left_hippo.png" hidden>
     <img id = "right_hippo" src = "src/png/right_hippo.png" hidden>
     <img id = "hurt_hippo" src = "src/png/hurt_hippo.png" hidden>
     <div class = 'container'>
         <div class = 'left'>
-            <div id = 'about'>About</div>
+            <div id = 'about' class = 'tooltip'>About
+                <span class = 'tooltiptext'>The idea of this project is to utilize Javascript's Web Speech API
+                    to create a simple game that takes voice inputs. </span>
+                </div>
+            <div id ='instructions' class = 'tooltip'>Instructions
+                <span class = 'tooltiptext'>Hey, there's a hippo in danger! Go help him out by telling him where to go or moving him yourself. <br><br>
+                    Please look at controls on the right for available commands. <br><br>
+                    Voice: You will have to allow mic access on your browser! Also, sometimes the hippo just doesn't want to listen so he might only listen 75% of the time.<br><br>
+                    Keyboard: Please use <b>WASD</b> to move.</span>
+                
+            </div>
             <div id = 'links'>Links</div>
         </div>
         <div id = 'game_container'>
@@ -32,8 +46,9 @@
         <div class = 'right'>
             <div class = 'score'>Score</div><p class = 'score' id = 'score'>0</p>
             <div class = 'lives'>Lives</div><p class = 'score' id = 'lives'>3</p>
-            <div id = 'controls'>Controls
+            <div id = 'controls'>Controls: 
                 <button id = 'a'>Left</button>
+                <button id = 's'>Down</button>
                 <button id = 'd'>Right</button>
             </div>
             

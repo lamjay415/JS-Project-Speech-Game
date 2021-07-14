@@ -24,6 +24,8 @@ class SpeechListener extends SpeechRecognition{
             return 'd';
         }else if(transcript.includes('l') || left.includes(transcript)){
             return 'a';
+        }else if(transcript.includes('d')){
+            return 's';
         }
     }
 

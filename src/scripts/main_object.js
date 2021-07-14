@@ -3,11 +3,12 @@ import GameObject from "./game_object";
 class MainObject extends GameObject{
     
     static hippo_src = 'standing_hippo';
+    static dir = 'left';
 
     constructor(){
         super();
         this.color = "#C8472B"
-        this.radius = 85;
+        this.radius = 50;
         this.pos = [300,750];
         this.speed = 120;
     }
@@ -20,7 +21,7 @@ class MainObject extends GameObject{
         //   );
         // ctx.fill();
         const img = document.getElementById(MainObject.hippo_src);
-        ctx.drawImage(img,this.pos[0]-100,this.pos[1]-170,250,250);
+        ctx.drawImage(img,this.pos[0]-100,this.pos[1]-155,190,190);
     }
 
     move(dir){
@@ -29,6 +30,7 @@ class MainObject extends GameObject{
                 if(this.pos[0] !== 60){
                     this.pos[0] -= 120;
                 }
+                MainObject.dir = 'left';
                 document.getElementById('a').classList.add('pressed');
                 setTimeout(()=>{
                     document.getElementById('a').classList.remove('pressed');
@@ -40,6 +42,7 @@ class MainObject extends GameObject{
                 if(this.pos[0] !== 540){
                     this.pos[0] += 120;
                 }
+                MainObject.dir = 'right';
                 document.getElementById('d').classList.add('pressed');
                 setTimeout(()=>{
                     document.getElementById('d').classList.remove('pressed');
@@ -47,10 +50,22 @@ class MainObject extends GameObject{
                 MainObject.hippo_src = 'right_hippo';
                 setTimeout( this.switch_default_src, 300);
                 break;
+            case 's':
+                document.getElementById('s').classList.add('pressed');
+                setTimeout(()=>{
+                    document.getElementById('s').classList.remove('pressed');
+                },400)
+                MainObject.hippo_src = 'down_hippo';
+                setTimeout( this.switch_default_src, 300);
+                break;
         }
     }
     switch_default_src(){
-        MainObject.hippo_src = 'standing_hippo';
+        if(MainObject.dir === 'left'){
+            MainObject.hippo_src = 'standing_hippo';
+        }else{
+            MainObject.hippo_src = 'standing_hippo2'
+        }
     }
 }
 
