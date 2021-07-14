@@ -1,4 +1,5 @@
 // import GameObject from "./game_objects";
+import AppleObject from "./apple_object";
 import FallingObject from "./falling_object";
 import FlyingObject from "./flying_object";
 import MainObject from "./main_object";
@@ -32,7 +33,7 @@ class Game{
 
     randomHorPos(){
         let y = 640;
-        let x = Math.floor(Math.random() * 900 + 600);
+        let x = Math.floor(Math.random() * 900 + 625);
         return [x,y];
     }
 
@@ -79,10 +80,18 @@ class Game{
 
             if(Game.hit){
                 this.hit_marker(Game.hit_pos);
-                MainObject.hippo_src = 'hurt_hippo';
+                if(MainObject.dir === 'left'){
+                    MainObject.hippo_src = 'hurt_hippo_left';
+                }else{
+                    MainObject.hippo_src = 'hurt_hippo_right';
+                }
                 setTimeout(()=>{
                     Game.hit = false;
-                    MainObject.hippo_src = 'standing_hippo'
+                    if(MainObject.dir === 'left'){
+                        MainObject.hippo_src = 'standing_hippo_left';
+                    }else{
+                        MainObject.hippo_src = 'standing_hippo_right';
+                    }
                 },500);
             }
             if(this.gameOver()){
@@ -131,23 +140,40 @@ class Game{
 
     checkCollision(){
         if(!Game.hit){
+            let canvas = document.getElementById('canvas');
+            let doc_lives = document.getElementById('lives');
             for(let i = 1; i < this.objs.length; i++){
                 if(this.main_obj.collideWith(this.objs[i]) && this.objs[i].pos[1] <= 700){
-                    Game.hit_pos = this.main_obj.pos;
-                    Game.hit = true;
-                    let canvas = document.getElementById('canvas');
-                    canvas.classList.add('apply-shake');
-                    setTimeout(() => {
-                        canvas.classList.remove('apply-shake');
-
-                    },750);
-                    let rock = this.objs[i];
-                    this.lives--;
-                    // console.log(rock.pos);
-                    this.resetPos(rock)
-                    let doc_lives = document.getElementById('lives');
-                    doc_lives.innerText = this.lives;
-                    // this.main_obj.invul(1000);
+                    console.log(this.objs[i]);
+                    if(this.objs[i] instanceof AppleObject){
+                        this.lives++;
+                        doc_lives.innerText = this.lives;
+                        doc_lives.classList.add('flash-green');
+                        setTimeout(() => {
+                            doc_lives.classList.remove('flash-green');
+                        },1000);
+                        this.hideObject(this.objs[i]);
+                    }else{
+                        console.log('hit');
+                        Game.hit_pos = this.main_obj.pos;
+                        Game.hit = true;
+                        // let canvas = document.getElementById('canvas');
+                        canvas.classList.add('apply-shake');
+                        setTimeout(() => {
+                            canvas.classList.remove('apply-shake');
+                        },750);
+                        let rock = this.objs[i];
+                        this.lives--;
+                        // console.log(rock.pos);
+                        this.resetPos(rock)
+                        // let doc_lives = document.getElementById('lives');
+                        doc_lives.innerText = this.lives;
+                        doc_lives.classList.add('flash-red');
+                        setTimeout(() => {
+                            doc_lives.classList.remove('flash-red');
+                        },1000);
+                        // this.main_obj.invul(1000);
+                    }
                     return true;
                 }
             }
@@ -155,23 +181,30 @@ class Game{
         return false;
     }
 
+    hideObject(obj){
+        obj.pos = [-100,-100];
+        obj.speed = 0;
+    }
     hit_marker(pos){
         const img = document.getElementById('hit_marker');
-        this.ctx.drawImage(img,pos[0]-55,pos[1]-145,100,100);
+        this.ctx.drawImage(img,pos[0]-45,pos[1]-120,100,100);
     }
 
     increaseDifficulty(){
-        this.objs.push(new FallingObject(this.randomPos()));
         Game.level++;
         for(let i = 1; i < this.objs.length; i++){
-            if(!typeof this.objs[i] === FlyingObject){
+            if(this.objs[i] instanceof FallingObject){
                 this.objs[i].speed += 2;
             }
         }
         if(Game.level % 2 === 0){
             // console.log(Game.level);
+            this.objs.push(new FallingObject(this.randomPos()));
             this.objs.push(new FlyingObject(this.randomHorPos));
+        }else if(Game.level % 3 === 0){
+            this.objs.push(new AppleObject(this.randomPos()));
         }
+        // console.log(this.objs);
     }
 
     gameOver(){

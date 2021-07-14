@@ -6,7 +6,7 @@ class FlyingObject extends GameObject{
         super(pos);
         this.color = "#000000";
         this.radius = 15;
-        this.speed = 4;
+        this.speed = 5;
         
         this.img = document.getElementById('leaf');
     }

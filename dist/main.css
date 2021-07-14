@@ -140,6 +140,14 @@ div + p {
   z-index: 1;
 }
 
+.flash-red {
+  color: palevioletred;
+}
+
+.flash-green {
+  color: yellowgreen;
+}
+
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }

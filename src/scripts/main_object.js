@@ -2,8 +2,8 @@ import GameObject from "./game_object";
 
 class MainObject extends GameObject{
     
-    static hippo_src = 'standing_hippo';
-    static dir = 'left';
+    static hippo_src = 'standing_hippo_right';
+    static dir = 'right';
 
     constructor(){
         super();
@@ -21,7 +21,7 @@ class MainObject extends GameObject{
           );
         ctx.fill();
         const img = document.getElementById(MainObject.hippo_src);
-        ctx.drawImage(img,this.pos[0]-100,this.pos[1]-115,175,175);
+        ctx.drawImage(img,this.pos[0]-100,this.pos[1]-90,165,165);
     }
 
     move(dir){
@@ -52,17 +52,16 @@ class MainObject extends GameObject{
                 break;
             case 's':
                 if(this.pos[1] === 700){
-                    this.pos[1] += 15;
-                    setTimeout(()=> this.pos[1] -= 15, 500);
+                    this.duck();
                 }
                 document.getElementById('s').classList.add('pressed');
                 setTimeout(()=>{
                     document.getElementById('s').classList.remove('pressed');
                 },400)
                 if(MainObject.dir == 'left'){
-                    MainObject.hippo_src = 'down_hippo';
+                    MainObject.hippo_src = 'down_hippo_left';
                 }else{
-                    MainObject.hippo_src = 'down_hippo2'
+                    MainObject.hippo_src = 'down_hippo_right';
                 }
                 setTimeout( this.switch_default_src, 300);
                 break;
@@ -70,10 +69,19 @@ class MainObject extends GameObject{
     }
     switch_default_src(){
         if(MainObject.dir === 'left'){
-            MainObject.hippo_src = 'standing_hippo';
+            MainObject.hippo_src = 'standing_hippo_left';
         }else{
-            MainObject.hippo_src = 'standing_hippo2'
+            MainObject.hippo_src = 'standing_hippo_right'
         }
+    }
+
+    duck(){
+        this.pos[1] += 15;
+        this.radius = 25;
+        setTimeout(()=> {
+            this.pos[1] -= 15;
+            this.radius = 50;
+        }, 500);
     }
 }
 
