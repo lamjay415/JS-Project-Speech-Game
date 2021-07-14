@@ -1,9 +1,14 @@
 // import GameObject from "./game_objects";
 import FallingObject from "./falling_object";
 import MainObject from "./main_object";
+import SpeechListener from "./speech_listener";
+
 class Game{
     static hit_pos = [];
     static hit = false;
+    static voiceCounter = 0;
+    static mode = '';
+    static recognition = new SpeechListener();
     constructor(ctx){
         this.DIMX = 600;
         this.DIMY = 800;
@@ -14,7 +19,6 @@ class Game{
         this.main_obj = new MainObject();
         this.objs.push(this.main_obj);
         this.createObjs(3);
-        this.checkInput();
     }
 
     randomPos(){
@@ -43,7 +47,6 @@ class Game{
     draw(){
         this.ctx.clearRect(0, 0, this.DIMX, this.DIMY);
         this.objs.forEach(el => {
-
             if(el.pos[1] < 900) {
                 el.draw(this.ctx)
             }else{
@@ -68,7 +71,6 @@ class Game{
             if(this.gameOver()){
                 clearInterval(gameInterval);
             }
-            // this.checkInput();
         },20);
 
         
@@ -86,10 +88,27 @@ class Game{
         },1000)
     }
 
-    checkInput(){
+    checkKeyInput(){
         document.addEventListener("keydown", (e) => {
             this.main_obj.move(e.key);
         });
+    }
+
+    checkVoiceInput(){
+        Game.recognition.start();
+        console.log('started');
+        Game.recognition.onresult = (e) =>{
+            console.log('start:' + Game.voiceCounter);
+            console.log(e.results);
+            if(e.results[Game.voiceCounter][0] !== undefined){
+                let input = e.results[Game.voiceCounter][0].transcript;
+                let dir = Game.recognition.processInput(input);
+                this.main_obj.move(dir);
+                Game.voiceCounter++;
+                console.log('end: ' + Game.voiceCounter);
+                sleep(500);
+            }
+        };
     }
 
     checkCollision(){
@@ -123,6 +142,9 @@ class Game{
 
     gameOver(){
         if(this.lives <= 0){
+            if(Game.mode === 'voice'){
+                Game.recognition.stop();
+            }
             console.log('GAME OVER!');
             return true;
         }
@@ -150,6 +172,10 @@ class Game{
     resetGame(){
         let scoreboard = document.getElementById('scoreboard');
         scoreboard.remove();
+        if(Game.mode === 'voice'){
+            Game.voiceCounter = 0;
+            this.checkVoiceInput();
+        }
         this.ctx.clearRect(0, 0, this.DIMX, this.DIMY);
         this.lives = 3;
         document.getElementById('lives').innerText = this.lives;
@@ -165,13 +191,24 @@ class Game{
         let doc_container = document.querySelector('.container');
         let startScreen = document.createElement('div');
         startScreen.setAttribute('class', 'start');
-        let playButton = document.createElement('button');
-        playButton.innerHTML = 'Play Game!'
-        playButton.addEventListener('click', (e) =>{
+        let voicePlay = document.createElement('button');
+        let keyPlay = document.createElement('button');
+        keyPlay.innerHTML = 'Keyboard Mode'
+        voicePlay.innerHTML = 'Voice Mode'
+        keyPlay.addEventListener('click', (e) =>{
+            Game.mode = 'key';
+            this.checkKeyInput();
             this.start();
             startScreen.remove();
-        })
-        startScreen.append(playButton);
+        });
+        voicePlay.addEventListener('click', (e) =>{
+            Game.mode = 'voice';
+            this.checkVoiceInput();
+            this.start();
+            startScreen.remove();
+        });
+        startScreen.append(voicePlay);
+        startScreen.append(keyPlay);
         doc_container.append(startScreen);
     }
 }

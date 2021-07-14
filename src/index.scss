@@ -13,8 +13,6 @@ body {
 }
 
 canvas {
-  // background-color: azure;
-  // background: url("../src/png/background.png");
   opacity: 1;
   position: absolute;
   left: -300px;
@@ -48,7 +46,7 @@ canvas {
 
 .right div:last-child {
   display: block;
-  margin-top: 500px;
+  margin-top: 25px;
 }
 
 .left div + div {
@@ -70,7 +68,17 @@ button:hover {
 div + p {
   font-family: "Dank Mono", ui-monospace, monospace;
 }
+
+#voice_img {
+  padding-top: 400px;
+}
+
 #scoreboard p {
   color: aliceblue;
+  text-decoration: underline;
   font-weight: bolder;
+}
+
+.start {
+  border: 2px solid black;
 }
