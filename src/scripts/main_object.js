@@ -20,7 +20,7 @@ class MainObject extends GameObject{
         //   );
         // ctx.fill();
         const img = document.getElementById(MainObject.hippo_src);
-        ctx.drawImage(img,this.pos[0]-100,this.pos[1]-155,250,250);
+        ctx.drawImage(img,this.pos[0]-100,this.pos[1]-170,250,250);
     }
 
     move(dir){

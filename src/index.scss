@@ -1,5 +1,6 @@
 body {
   background-color: lightblue;
+
 }
 
 .container {
@@ -63,7 +64,18 @@ button:hover {
   position: absolute;
   margin-top: 300px;
   text-align: center;
-  margin-right: 50px;
+  margin-right: 85px;
+  padding: 15px;
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+.start button {
+  padding: 7px;
+  margin: 10px;
 }
 div + p {
   font-family: "Dank Mono", ui-monospace, monospace;

@@ -130,7 +130,7 @@ class Game{
 
     hit_marker(pos){
         const img = document.getElementById('hit_marker');
-        this.ctx.drawImage(img,pos[0]-50,pos[1]-145,100,100);
+        this.ctx.drawImage(img,pos[0]-55,pos[1]-165,100,100);
     }
 
     increaseDifficulty(){
@@ -156,7 +156,7 @@ class Game{
         let scoreboard = document.createElement('div');
         scoreboard.setAttribute('id', 'scoreboard');
         let score = document.createElement('p');
-        score.innerText = `Your Final Score: ${this.score}`;
+        score.innerText = `GAME OVER! \n Final Score: ${this.score}`;
         let restartButton = document.createElement('button');
         restartButton.innerText = "Play Again"
         restartButton.setAttribute('id', 'restart');
