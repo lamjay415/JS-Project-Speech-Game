@@ -68,12 +68,13 @@ button:hover {
 
 .start {
   display: flex;
-  border: 2px solid black;
+  border: 2px solid gray;
   position: absolute;
   margin-top: 300px;
   text-align: center;
   margin-right: 85px;
   padding: 10px;
+  box-shadow: 0 0 10px silver;
   background: #eeaeca;
   background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
 }
@@ -84,6 +85,7 @@ button:hover {
 }
 
 .start p {
+  margin-top: 13px;
   color: aliceblue;
   font-weight: bolder;
 }
