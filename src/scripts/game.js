@@ -107,7 +107,7 @@ class Game{
 
         
         let scoreInterval = setInterval(() =>{
-            let doc_score = document.getElementById('score');
+            let doc_score = document.getElementById('num_score');
             // this.score++;
             doc_score.innerText = ++this.score;
             if(this.gameOver()){
@@ -117,7 +117,7 @@ class Game{
             if(this.score % 15 === 0){
                 this.increaseDifficulty();
             }
-        },1000)
+        },1000);
     }
 
     checkKeyInput(){
@@ -147,7 +147,7 @@ class Game{
     checkCollision(){
         if(!Game.hit){
             let canvas = document.getElementById('canvas');
-            let doc_lives = document.getElementById('lives');
+            let doc_lives = document.getElementById('num_lives');
             for(let i = 1; i < this.objs.length; i++){
                 if(this.main_obj.collideWith(this.objs[i]) && this.objs[i].pos[1] <= 700){
                     console.log(this.objs[i]);
@@ -233,11 +233,15 @@ class Game{
     }
 
     gameOverDisplay(){
+        let top_scores = document.querySelector('.top-scores');
+        top_scores.remove();
         let scoreboard_container = document.querySelector('#scoreboard-container');
         let scoreboard = document.createElement('div');
         scoreboard.setAttribute('id', 'scoreboard');
         let score = document.createElement('p');
         score.innerText = `GAME OVER! \n Final Score: ${this.score}`;
+        sessionStorage.setItem(sessionStorage.length, this.score);
+        this.draw_leaderboard();
         let restartButton = document.createElement('button');
         restartButton.innerText = "Play Again"
         restartButton.setAttribute('id', 'restart');
@@ -259,9 +263,9 @@ class Game{
         }
         this.ctx.clearRect(0, 0, this.DIMX, this.DIMY);
         this.lives = 3;
-        document.getElementById('lives').innerText = this.lives;
+        document.getElementById('num_lives').innerText = this.lives;
         this.score = 0;
-        document.getElementById('score').innerText = this.score;
+        document.getElementById('num_score').innerText = this.score;
         this.objs = [];
         this.main_obj = new MainObject();
         this.objs.push(this.main_obj);
@@ -269,6 +273,7 @@ class Game{
     }
 
     startScreen(){
+        this.draw_leaderboard();
         let doc_container = document.querySelector('.container');
         let startScreen = document.createElement('div');
         startScreen.setAttribute('class', 'start');
@@ -309,5 +314,21 @@ class Game{
             ctx.fillText(text,20,300);
         }
     }
+
+    draw_leaderboard(){
+        let leaderboard = document.querySelector('.leaderboard');
+        let top_scores = document.createElement('div');
+        top_scores.setAttribute('class','top-scores');
+        let score_list = document.createElement('ul');
+        let ordered_score_list = Object.keys(sessionStorage).sort((a,b)=>sessionStorage[b]-sessionStorage[a]);
+        ordered_score_list.slice(0,5).forEach(el => {
+            let score = document.createElement('li');
+            score.innerText = sessionStorage.getItem(el);
+            score_list.append(score);
+        });
+        top_scores.append(score_list);
+        leaderboard.append(top_scores);
+    }
+    
 }
 export default Game; 

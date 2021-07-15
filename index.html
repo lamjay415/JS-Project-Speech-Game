@@ -15,7 +15,8 @@
 </head>
 
 <body>
-    <audio src ="src/audio/makai-symphony-dragon-slayer.mp3"></audio>
+    <audio id = 'epic' src ="src/audio/makai-symphony-dragon-slayer.mp3"></audio>
+    <audio id = 'chill' src ="src/audio/Elysian-Sea_of_Emotions.mp3"></audio>
     <img id = "rock1" src = "src/png/rock1.png" hidden>
     <img id = "rock2" src = "src/png/rock2.png" hidden>
     <img id = "rock3" src = "src/png/rock3.png" hidden>
@@ -36,7 +37,10 @@
     <img id = "happy_hippo_right" src = "src/png/happy_hippo_right.png" hidden>
     <div id = 'header'>
         <h1 class='title' >Run Hippo Run</h1>
-        <button class ='audio' id = 'play-audio'></button>
+        <div class = 'audio'>
+            <button class ='audio' id='play-audio'></button>
+            <button class ='audio' id='next-audio'></button>
+        </div>
     </div>
     <div id = 'scoreboard-container'></div>
     <div class = 'container'>
@@ -59,9 +63,19 @@
             <img id = 'background' src ='https://media1.tenor.com/images/785956732b48f9ce2f7c7b6a7474fb0c/tenor.gif?itemid=15643376'>
         </div>
         <div class = 'right'>
-            <div class = 'score'>Score</div><p class = 'score' id = 'score'>0</p>
-            <div class = 'lives'>Lives</div><p class = 'score' id = 'lives'>3</p>
-            <div id = 'controls'>Controls: 
+            <div class = 'score'>
+                <div class = 'label'>Score</div>
+                <div class = 'value' id = 'num_score'>0</div>
+            </div>
+            <div class = 'lives'>
+                <div class = 'label'>Lives</div>
+                <div class = 'value' id = 'num_lives'>3</div>
+             </div>
+             <div class = 'leaderboard'>
+                
+            </div>
+            <div class='control_label'>Controls:</div>
+            <div id = 'controls'> 
                 <div class = 'button' id = 'a'>Left</div>
                 <div class = 'button' id = 's'>Down</div>
                 <div class = 'button' id = 'd'>Right</div>
