@@ -57,7 +57,7 @@ canvas {
 }
 
 .left div + div {
-  margin-top: 200px;
+  margin-top: 50px;
 }
 
 button:hover {
@@ -96,10 +96,10 @@ div + p {
 
 #voice_img {
   display: none;
-  margin-left: 34%;
+  margin-left: 33%;
   margin-right: auto;
-  padding-top: 125px;
   border: 2px solid aliceblue;
+  box-shadow: 0 0 10px lightblue;
 }
 
 #scoreboard p {
