@@ -157,7 +157,7 @@ button:hover {
 .start div {
   padding: 5px;
   margin: 10px;
-  border: 1px solid black;
+  border: 1px solid lightslategrey;
   border-radius: 5px;
   background-color: aliceblue;
   transition: 1s;
