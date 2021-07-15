@@ -73,11 +73,17 @@ class Game{
     }
 
     start(){
+        let display = true;
         let gameInterval = setInterval(() => {
             this.draw(this.ctx);
             this.moveObjects();
             this.checkCollision();
-
+            if(display){
+                this.draw_instructions(this.ctx);
+            }
+            setTimeout(()=>{
+                display = false;
+            },2500);
             if(Game.hit){
                 this.hit_marker(Game.hit_pos);
                 if(MainObject.dir === 'left'){
@@ -208,9 +214,10 @@ class Game{
         if(Game.level % 2 === 0){
             // console.log(Game.level);
             this.objs.push(new FallingObject(this.randomPos()));
-            this.objs.push(new FlyingObject(this.randomHorPos));
         }else if(Game.level % 3 === 0){
             this.objs.push(new AppleObject(this.randomPos()));
+        }else if(Game.level === 3 || Game.level === 5){
+            this.objs.push(new FlyingObject(this.randomHorPos));
         }
         // console.log(this.objs);
     }
@@ -269,7 +276,7 @@ class Game{
         let keyPlay = document.createElement('button');
         keyPlay.innerHTML = 'Keyboard'
         let pTag = document.createElement('p');
-        pTag.innerHTML = 'or';
+        pTag.innerHTML = 'Play With';
 
         voicePlay.innerHTML = 'Voice'
         keyPlay.addEventListener('click', (e) =>{
@@ -288,6 +295,19 @@ class Game{
         startScreen.append(pTag);
         startScreen.append(keyPlay);
         doc_container.append(startScreen);
+    }
+
+    draw_instructions(ctx){
+        ctx.font = "bold 48px serif";
+        ctx.fillStyle = 'rgb(139, 216, 235)';
+        let text = "";
+        if(Game.mode === 'voice'){
+            text = 'Tell Hippo where to go!'
+            ctx.fillText(text,55,300);
+        }else{
+            text = 'Use WASD to move Hippo!'
+            ctx.fillText(text,20,300);
+        }
     }
 }
 export default Game; 

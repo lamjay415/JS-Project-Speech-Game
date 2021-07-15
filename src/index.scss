@@ -7,15 +7,35 @@ body {
   // background-position-x: 40%;
 }
 
+#play-audio {
+  background: url("../src/png/play_button.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  border-radius: 20px;
+  width: 30px;
+  height: 30px;
+  
+}
+
 .title {
-  color: teal;
+  background-color: rgb(146, 219, 219);
+  width: 350px;
+  margin: 5px;
+  padding: 5px;
+  display: box;
+  color: rgb(62, 132, 165);
   font-size: 50px;
+  border: 2px solid rgb(139, 216, 235);
+  border-radius: 10px;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
 .container {
   display: flex;
   justify-content: space-around;
-  margin-top: 75px;
+  margin-top: 25px;
 }
 
 #game_container {
@@ -92,9 +112,10 @@ button:hover {
   margin: 10px;
 }
 .start p {
-  margin-top: 13px;
+  // margin-top: 13px;
   color: aliceblue;
   font-weight: bolder;
+  text-decoration: underline;
 }
 div + p {
   font-family: "Dank Mono", ui-monospace, monospace;
@@ -154,26 +175,6 @@ div + p {
 .apply-shake {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
-// .tooltip {
-//   position: relative;
-//   // display: inline-block;
-//   border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-// }
-
-// // /* Tooltip text */
-// .tooltip .tooltiptext {
-//   visibility: hidden;
-//   width: 120px;
-//   background-color: rgb(95, 94, 94);
-//   color: aliceblue;
-//   // text-align: center;
-//   padding: 5px 0;
-//   border-radius: 6px;
-
-//   /* Position the tooltip text - see examples below! */
-//   position: absolute;
-//   z-index: 1;
-// }
 
 .flash-red {
   color: palevioletred;

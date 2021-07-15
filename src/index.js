@@ -5,10 +5,21 @@ import Game from "./scripts/game";
 
 document.addEventListener("DOMContentLoaded", function () {
     const canvasEl = document.getElementById('canvas');
-  
     const ctx = canvasEl.getContext("2d");
     const game = new Game(ctx);
-    // console.log(game.objs);
-    // game.createObjs(3);
+    const audio = document.querySelector("audio");
+    const button = document.querySelector("#play-audio");
+    audio.loop = true;
+    let audio_playing = false;
+    button.addEventListener('click', e => {
+        if(!audio_playing){
+            audio.volume = 0.1;
+            audio.play();
+            audio_playing = true;
+        }else{
+            audio.pause();
+            audio_playing = false;
+        }
+    });
     game.startScreen();
 });
