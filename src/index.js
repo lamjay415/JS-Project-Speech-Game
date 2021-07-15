@@ -16,9 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
             audio.volume = 0.1;
             audio.play();
             audio_playing = true;
+            button.style.backgroundImage = 'url("./src/png/pause_button.png")';
         }else{
             audio.pause();
             audio_playing = false;
+            button.style.backgroundImage = 'url("./src/png/play_button.png")';
         }
     });
     game.startScreen();
