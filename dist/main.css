@@ -151,7 +151,8 @@ button:hover {
   padding: 10px;
   left: 42vw;
   box-shadow: 0 0 10px silver;
-  background-color: #90be78;
+  background: #020024;
+  background: linear-gradient(306deg, #020024 0%, rgba(9, 99, 121, 0.7525385154) 23%, #00d4ff 100%);
 }
 
 .start div {
@@ -188,7 +189,7 @@ button:hover {
 }
 
 .start p {
-  color: black;
+  color: lightgray;
   font-weight: bolder;
   text-decoration: underline;
 }

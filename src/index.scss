@@ -57,7 +57,7 @@ body {
   // box-shadow: 5px 5px 10px rgb(134, 134, 136);
 }
 
-.leaderboard div:first-child{
+.leaderboard div:first-child {
   padding: 3px;
 }
 #header {
@@ -92,7 +92,6 @@ body {
 
 .audio {
   padding: 20px;
-  
 }
 
 .left {
@@ -162,7 +161,9 @@ button:hover {
   padding: 10px;
   left: 42vw;
   box-shadow: 0 0 10px silver;
-  background-color: #90be78;
+  // background-color: #90be78;
+  background: rgb(2,0,36);
+background: linear-gradient(306deg, rgba(2,0,36,1) 0%, rgba(9,99,121,0.7525385154061625) 23%, rgba(0,212,255,1) 100%);
 }
 
 .start div {
@@ -200,7 +201,7 @@ button:hover {
 
 .start p {
   // margin-top: 13px;
-  color: black;
+  color: lightgray;
   font-weight: bolder;
   text-decoration: underline;
 }
@@ -221,7 +222,7 @@ button:hover {
   margin-left: 35%;
   margin-right: auto;
   // padding-top: 125px;
-  height:100px;
+  height: 100px;
   border: 2px solid aliceblue;
   box-shadow: 0 0 10px lightblue;
   // padding-left: 350px;

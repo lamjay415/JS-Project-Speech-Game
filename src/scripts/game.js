@@ -306,14 +306,14 @@ class Game{
 
     draw_instructions(ctx){
         ctx.font = "bold 48px serif";
-        ctx.fillStyle = 'rgb(139, 216, 235)';
+        ctx.fillStyle = '#7d3a63';
         let text = "";
         if(Game.mode === 'voice'){
             text = 'Tell Hippo where to go!'
             ctx.fillText(text,55,300);
         }else{
             text = 'Use ASD to move Hippo!'
-            ctx.fillText(text,30,300);
+            ctx.fillText(text,40,300);
         }
     }
 
