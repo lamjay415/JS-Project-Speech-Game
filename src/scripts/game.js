@@ -272,8 +272,8 @@ class Game{
         let doc_container = document.querySelector('.container');
         let startScreen = document.createElement('div');
         startScreen.setAttribute('class', 'start');
-        let voicePlay = document.createElement('button');
-        let keyPlay = document.createElement('button');
+        let voicePlay = document.createElement('div');
+        let keyPlay = document.createElement('div');
         keyPlay.innerHTML = 'Keyboard'
         let pTag = document.createElement('p');
         pTag.innerHTML = 'Play With';

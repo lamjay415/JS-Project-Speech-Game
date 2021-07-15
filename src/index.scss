@@ -24,7 +24,7 @@ body {
   height: 30px;
 }
 
-#header{
+#header {
   display: flex;
   justify-content: space-between;
 }
@@ -98,16 +98,11 @@ canvas {
   margin-top: 200px;
 }
 
-.pressed {
-  background-color: 4px solid #4dcc7d;
-  color: #4dcc7d;
-  box-shadow: 0 0 10px #31b43a;
-}
 
-.right div:last-child {
-  display: block;
-  // margin-top: 490px;
-}
+// .right div:last-child {
+//   display: block;
+//   // margin-top: 490px;
+// }
 
 button:hover {
   background-color: 4px solid #4dcc7d;
@@ -124,12 +119,41 @@ button:hover {
   padding: 10px;
   left: 41vw;
   box-shadow: 0 0 10px silver;
-  background-color: #eabc3b;
+  background-color: #90be78;
 }
-.start button {
+
+.start div {
   padding: 5px;
   margin: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: aliceblue;
+  transition: 1s;
+  cursor: pointer;
 }
+
+#controls div {
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: aliceblue;
+}
+
+.pressed {
+  background-color: 4px solid #4dcc7d;
+  color: #4dcc7d;
+  box-shadow: 0 0 10px #31b43a;
+  transition: 1.5s;
+  transform: scale(1.1);
+}
+
+.start div:hover {
+  background-color: rgb(146, 219, 219);
+  transition: 1s;
+  transform: scale(1.1);
+}
+
 .start p {
   // margin-top: 13px;
   color: black;

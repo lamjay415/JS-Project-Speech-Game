@@ -34,7 +34,7 @@ class MainObject extends GameObject{
                 document.getElementById('a').classList.add('pressed');
                 setTimeout(()=>{
                     document.getElementById('a').classList.remove('pressed');
-                },400)
+                },1000)
                 MainObject.hippo_src = 'left_hippo';
                 setTimeout( this.switch_default_src, 300);
                 break;
@@ -46,7 +46,7 @@ class MainObject extends GameObject{
                 document.getElementById('d').classList.add('pressed');
                 setTimeout(()=>{
                     document.getElementById('d').classList.remove('pressed');
-                },400)
+                },1000)
                 MainObject.hippo_src = 'right_hippo';
                 setTimeout( this.switch_default_src, 300);
                 break;
@@ -57,7 +57,7 @@ class MainObject extends GameObject{
                 document.getElementById('s').classList.add('pressed');
                 setTimeout(()=>{
                     document.getElementById('s').classList.remove('pressed');
-                },400)
+                },1000)
                 if(MainObject.dir == 'left'){
                     MainObject.hippo_src = 'down_hippo_left';
                 }else{
