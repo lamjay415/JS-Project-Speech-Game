@@ -2,7 +2,13 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
 body {
-  background-color: lightblue;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background: #22c1c3;
+  background: linear-gradient(347deg, #22c1c3 0%, #fdbb2d 100%);
+  background-size: cover;
+  font-family: "Roboto", sans-serif;
 }
 
 #play-audio {
@@ -14,6 +20,11 @@ body {
   border-radius: 20px;
   width: 30px;
   height: 30px;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
@@ -31,25 +42,41 @@ body {
 
 .container {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   margin-top: 25px;
+  width: 100vw;
 }
 
 #game_container {
   position: relative;
 }
 
+.left {
+  padding-left: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 33.33%;
+}
+
+.right {
+  display: flex;
+  width: 33.33%;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* justify-content: center; */
+  align-items: center;
+}
+
 canvas {
   opacity: 1;
   position: absolute;
-  left: -300px;
 }
 
 #background {
   width: 600px;
   height: 800px;
-  position: absolute;
-  left: -300px;
   border: 2px solid #0da7a7;
   box-shadow: 0 0 10px #0fb9b9;
 }
@@ -59,9 +86,12 @@ canvas {
   position: absolute;
   border: 2px solid yellowgreen;
   box-shadow: 0 0 10px #31b43a;
-  margin-top: 300px;
+  /* margin-top: 300px; */
   text-align: center;
   margin-right: 100px;
+  left: 42.5vw;
+  z-index: 1;
+  margin-top: 200px;
 }
 
 .pressed {
@@ -72,11 +102,6 @@ canvas {
 
 .right div:last-child {
   display: block;
-  margin-top: 490px;
-}
-
-.left div + div {
-  margin-top: 50px;
 }
 
 button:hover {
@@ -89,13 +114,12 @@ button:hover {
   display: flex;
   border: 2px solid gray;
   position: absolute;
-  margin-top: 300px;
+  margin-top: 250px;
   text-align: center;
-  margin-right: 85px;
   padding: 10px;
+  left: 41vw;
   box-shadow: 0 0 10px silver;
-  background: #eeaeca;
-  background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
+  background-color: #eabc3b;
 }
 
 .start button {
@@ -104,13 +128,17 @@ button:hover {
 }
 
 .start p {
-  color: aliceblue;
+  color: black;
   font-weight: bolder;
   text-decoration: underline;
 }
 
-div + p {
-  font-family: "Dank Mono", ui-monospace, monospace;
+#about,
+#instructions,
+#links {
+  width: 75%;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #voice_img {
@@ -125,12 +153,6 @@ div + p {
   color: aliceblue;
   text-decoration: underline;
   font-weight: bolder;
-}
-
-#about,
-#instructions {
-  width: 100px;
-  overflow-wrap: break-word;
 }
 
 @keyframes shake {

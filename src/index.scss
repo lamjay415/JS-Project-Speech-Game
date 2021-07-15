@@ -1,10 +1,16 @@
 body {
-  background-color: lightblue;
-  // background-image: url("../src/png/voice.gif");
-  // background-size: contain;
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-position-x: 40%;
+  height: 100vh;
+  width: 100vw;
+  // overflow-y: scroll;
+  overflow-x: hidden;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    347deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  background-size: cover;
+  font-family: "Roboto", sans-serif;
 }
 
 #play-audio {
@@ -16,7 +22,11 @@ body {
   border-radius: 20px;
   width: 30px;
   height: 30px;
-  
+}
+
+#header{
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
@@ -34,28 +44,43 @@ body {
 
 .container {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   margin-top: 25px;
+  width: 100vw;
 }
 
 #game_container {
   position: relative;
+  // width: 33.33%;
+}
+
+.left {
+  padding-left: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 33.33%;
+}
+
+.right {
+  display: flex;
+  width: 33.33%;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  /* justify-content: center; */
+  align-items: center;
 }
 
 canvas {
   opacity: 1;
   position: absolute;
-  left: -300px;
 }
 
 #background {
   width: 600px;
   height: 800px;
-  position: absolute;
-  left: -300px;
-  // left: 90px;
-  // position: relative;
-  // z-index: -1;
   border: 2px solid rgb(13, 167, 167);
   box-shadow: 0 0 10px rgb(15, 185, 185);
 }
@@ -65,9 +90,12 @@ canvas {
   position: absolute;
   border: 2px solid yellowgreen;
   box-shadow: 0 0 10px #31b43a;
-  margin-top: 300px;
+  /* margin-top: 300px; */
   text-align: center;
   margin-right: 100px;
+  left: 42.5vw;
+  z-index: 1;
+  margin-top: 200px;
 }
 
 .pressed {
@@ -78,11 +106,7 @@ canvas {
 
 .right div:last-child {
   display: block;
-  margin-top: 490px;
-}
-
-.left div + div {
-  margin-top: 50px;
+  // margin-top: 490px;
 }
 
 button:hover {
@@ -95,17 +119,12 @@ button:hover {
   display: flex;
   border: 2px solid gray;
   position: absolute;
-  margin-top: 300px;
+  margin-top: 250px;
   text-align: center;
-  margin-right: 85px;
   padding: 10px;
+  left: 41vw;
   box-shadow: 0 0 10px silver;
-  background: rgb(238, 174, 202);
-  background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
-  );
+  background-color: #eabc3b;
 }
 .start button {
   padding: 5px;
@@ -113,12 +132,20 @@ button:hover {
 }
 .start p {
   // margin-top: 13px;
-  color: aliceblue;
+  color: black;
   font-weight: bolder;
   text-decoration: underline;
 }
-div + p {
-  font-family: "Dank Mono", ui-monospace, monospace;
+// div + p {
+//   font-family: "Dank Mono", ui-monospace, monospace;
+// }
+
+#about,
+#instructions,
+#links {
+  width: 75%;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #voice_img {
@@ -141,12 +168,6 @@ div + p {
   color: aliceblue;
   text-decoration: underline;
   font-weight: bolder;
-}
-
-#about,
-#instructions {
-  width: 100px;
-  overflow-wrap: break-word;
 }
 
 @keyframes shake {

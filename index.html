@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./src/styles/cssreset.css" />
     <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
     <script src="./dist/main.js"></script>
     <title>Run Hippo Run</title>
 </head>
@@ -31,34 +34,37 @@
     <img id = "hurt_hippo_right" src = "src/png/hurt_hippo_right.png" hidden>
     <img id = "happy_hippo_left" src = "src/png/happy_hippo_left.png" hidden>
     <img id = "happy_hippo_right" src = "src/png/happy_hippo_right.png" hidden>
-    <h1 class='title' >Run Hippo Run</h1>
-    <button class ='audio' id = 'play-audio'></button>
+    <div id = 'header'>
+        <h1 class='title' >Run Hippo Run</h1>
+        <button class ='audio' id = 'play-audio'></button>
+    </div>
+    <div id = 'scoreboard-container'></div>
     <div class = 'container'>
         <div class = 'left'>
-            <div id = 'about' class = 'tooltip'>About: <br>
-                <span class = 'tooltiptext'>The idea of this project is to utilize Javascript's Web Speech API
-                    to create a simple game that takes voice inputs. </span>
+            <div id = 'about' >About: <br>
+                <div>The idea of this project is to utilize Javascript's Web Speech API
+                    to create a simple game that takes voice inputs. </div>
                 </div>
-            <div id ='instructions' class = 'tooltip'>Instructions <br>
-                <span class = 'tooltiptext'>Hey, there's a hippo in danger! Go help him out by telling him where to go or moving him yourself. <br><br>
+            <div id ='instructions' >Instructions: <br>
+                <div>Hey, there's a hippo in danger! Go help him out by telling him where to go or moving him yourself. <br><br>
                     Please look at controls on the right for available commands. <br><br>
                     Voice: You will have to allow mic access on your browser! Also, sometimes the hippo just doesn't want to listen. Sorry!<br><br>
-                    Keyboard: Please use <b>WASD</b> to move.</span>
+                    Keyboard: Please use ASD to move.</div>
                 
             </div>
             <div id = 'links'>Links</div>
         </div>
         <div id = 'game_container'>
-            <img id = 'background' src ='https://media1.tenor.com/images/785956732b48f9ce2f7c7b6a7474fb0c/tenor.gif?itemid=15643376'>
             <canvas id='canvas' height = '800', width = '600'></canvas>
+            <img id = 'background' src ='https://media1.tenor.com/images/785956732b48f9ce2f7c7b6a7474fb0c/tenor.gif?itemid=15643376'>
         </div>
         <div class = 'right'>
             <div class = 'score'>Score</div><p class = 'score' id = 'score'>0</p>
             <div class = 'lives'>Lives</div><p class = 'score' id = 'lives'>3</p>
             <div id = 'controls'>Controls: 
-                <button id = 'a'>Left</button>
-                <button id = 's'>Down</button>
-                <button id = 'd'>Right</button>
+                <div id = 'a'>Left</div>
+                <div id = 's'>Down</div>
+                <div id = 'd'>Right</div>
             </div>
             
         </div>

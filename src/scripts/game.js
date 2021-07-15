@@ -233,7 +233,7 @@ class Game{
     }
 
     gameOverDisplay(){
-        let doc_container = document.querySelector('.container');
+        let scoreboard_container = document.querySelector('#scoreboard-container');
         let scoreboard = document.createElement('div');
         scoreboard.setAttribute('id', 'scoreboard');
         let score = document.createElement('p');
@@ -247,7 +247,7 @@ class Game{
         });
         scoreboard.append(score);
         scoreboard.append(restartButton);
-        doc_container.append(scoreboard);
+        scoreboard_container.append(scoreboard);
     }
 
     resetGame(){
@@ -305,7 +305,7 @@ class Game{
             text = 'Tell Hippo where to go!'
             ctx.fillText(text,55,300);
         }else{
-            text = 'Use WASD to move Hippo!'
+            text = 'Use ASD to move Hippo!'
             ctx.fillText(text,20,300);
         }
     }
