@@ -5,6 +5,11 @@ body {
   background-color: lightblue;
 }
 
+.title {
+  color: teal;
+  font-size: 50px;
+}
+
 .container {
   display: flex;
   justify-content: space-around;
@@ -26,6 +31,8 @@ canvas {
   height: 800px;
   position: absolute;
   left: -300px;
+  border: 2px solid #0da7a7;
+  box-shadow: 0 0 10px #0fb9b9;
 }
 
 #scoreboard {
@@ -87,9 +94,10 @@ div + p {
 
 #voice_img {
   display: none;
-  margin-left: 35%;
+  margin-left: 34%;
   margin-right: auto;
   padding-top: 125px;
+  border: 2px solid aliceblue;
 }
 
 #scoreboard p {
@@ -120,24 +128,6 @@ div + p {
 }
 .apply-shake {
   animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-}
-
-.tooltip {
-  position: relative;
-  border-bottom: 1px dotted black;
-  /* If you want dots under the hoverable text */
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #5f5e5e;
-  color: aliceblue;
-  padding: 5px 0;
-  border-radius: 6px;
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 1;
 }
 
 .flash-red {

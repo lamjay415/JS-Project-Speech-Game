@@ -128,7 +128,7 @@ class Game{
                 let img = document.getElementById('voice_img');
                 // img.removeAttribute('hidden');
                 img.style.display = 'block';
-                setTimeout( () => img.style.display = 'none', 750);
+                setTimeout( () => img.style.display = 'none', 1000);
                 input = e.results[Game.voiceCounter][0].transcript;
                 console.log(input);
                 let dir = Game.recognition.processInput(input);
@@ -149,6 +149,14 @@ class Game{
                         this.lives++;
                         doc_lives.innerText = this.lives;
                         doc_lives.classList.add('flash-green');
+                        if(MainObject.dir === 'left'){
+                            MainObject.hippo_src = 'happy_hippo_left';
+                        }else{
+                            MainObject.hippo_src = 'happy_hippo_right';
+                        }
+                        setTimeout( () => {
+                            this.main_obj.switch_default_src();
+                        }, 750);
                         setTimeout(() => {
                             doc_lives.classList.remove('flash-green');
                         },1000);
