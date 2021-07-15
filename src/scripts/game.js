@@ -240,7 +240,7 @@ class Game{
         scoreboard.setAttribute('id', 'scoreboard');
         let score = document.createElement('p');
         score.innerText = `GAME OVER! \n Final Score: ${this.score}`;
-        sessionStorage.setItem(sessionStorage.length, this.score);
+        localStorage.setItem(localStorage.length, this.score);
         this.draw_leaderboard();
         let restartButton = document.createElement('button');
         restartButton.innerText = "Play Again"
@@ -278,12 +278,14 @@ class Game{
         let startScreen = document.createElement('div');
         startScreen.setAttribute('class', 'start');
         let voicePlay = document.createElement('div');
+        voicePlay.setAttribute('id','voice_button');
         let keyPlay = document.createElement('div');
-        keyPlay.innerHTML = 'Keyboard'
+        keyPlay.setAttribute('id','key_button');
+        // keyPlay.innerHTML = 'Keyboard'
         let pTag = document.createElement('p');
         pTag.innerHTML = 'Play With';
 
-        voicePlay.innerHTML = 'Voice'
+        // voicePlay.innerHTML = 'Voice'
         keyPlay.addEventListener('click', (e) =>{
             Game.mode = 'key';
             this.checkKeyInput();
@@ -311,7 +313,7 @@ class Game{
             ctx.fillText(text,55,300);
         }else{
             text = 'Use ASD to move Hippo!'
-            ctx.fillText(text,20,300);
+            ctx.fillText(text,30,300);
         }
     }
 
@@ -319,16 +321,18 @@ class Game{
         let leaderboard = document.querySelector('.leaderboard');
         let top_scores = document.createElement('div');
         top_scores.setAttribute('class','top-scores');
-        let score_list = document.createElement('ul');
-        let ordered_score_list = Object.keys(sessionStorage).sort((a,b)=>sessionStorage[b]-sessionStorage[a]);
+        let score_list = document.createElement('div');
+        score_list.setAttribute('class', 'score_ul');
+        let ordered_score_list = Object.keys(localStorage).sort((a,b)=>localStorage[b]-localStorage[a]);
         ordered_score_list.slice(0,5).forEach(el => {
-            let score = document.createElement('li');
-            score.innerText = sessionStorage.getItem(el);
+            let score = document.createElement('div');
+            score.setAttribute('class', 'score_li');
+            score.innerText = localStorage.getItem(el);
             score_list.append(score);
         });
         top_scores.append(score_list);
         leaderboard.append(top_scores);
     }
-    
+
 }
 export default Game; 

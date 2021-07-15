@@ -22,6 +22,26 @@ body {
   height: 30px;
 }
 
+#key_button {
+  background: url("../src/png/key_icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  background-color: lightblue;
+}
+
+#voice_button {
+  background: url("../src/png/mic_icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  background-color: lightblue;
+}
+
 #next-audio {
   background: url("../src/png/next_button.png");
   background-position: center;
@@ -31,6 +51,10 @@ body {
   border-radius: 20px;
   width: 30px;
   height: 30px;
+}
+
+.leaderboard div:first-child {
+  padding: 3px;
 }
 
 #header {
@@ -234,6 +258,19 @@ button:hover {
   padding-top: 5px;
 }
 
+.leaderboard {
+  margin-top: 150px;
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 2px;
+  font-weight: bold;
+  box-shadow: 5px 5px 10px #868688;
+}
+
+.score_li {
+  padding: 5px;
+}
+
 .score,
 .lives {
   border-radius: 2px;
@@ -247,5 +284,9 @@ button:hover {
 }
 
 .control_label {
-  margin-top: 300px;
+  margin-top: 200px;
+}
+
+.score_ul {
+  text-align: center;
 }
