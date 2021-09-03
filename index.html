@@ -10,8 +10,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="/src/png/favicon.png"/>
     <script src="./dist/main.js"></script>
-    <title>For Fun Project</title>
+    <title>Hippo Run</title>
 </head>
 
 <body>
@@ -36,7 +37,7 @@
     <img id = "happy_hippo_left" src = "src/png/happy_hippo_left.png" hidden>
     <img id = "happy_hippo_right" src = "src/png/happy_hippo_right.png" hidden>
     <div id = 'header'>
-        <h1 class='title' >Run Hippo Run</h1>
+        <h1 class='title' >Hippo Run</h1>
         <div class = 'audio'>
             <button class ='audio' id='play-audio'></button>
             <button class ='audio' id='next-audio'></button>
@@ -56,7 +57,11 @@
                     Keyboard: Please use ASD to move.</div>
                 
             </div>
-            <div id = 'links'>Links</div>
+            <div id = 'links'>Links
+                <img src='src/png/linkedin.png' height='30' width='30' onClick="window.open('https://www.linkedin.com/in/jay-lam/','_blank')" class='ref-link'/>
+                <img src='src/png/github.png' height='30' width='30' onClick="window.open('https://github.com/lamjay415','_blank')" class='ref-link'/>
+                <img src='src/png/portfolio.png' height='30' width='30' onClick="window.open('https://jay-lam.netlify.app/','_blank')" class='ref-link'/>
+            </div>
         </div>
         <div id = 'game_container'>
             <canvas id='canvas' height = '800', width = '600'></canvas>

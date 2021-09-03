@@ -136,7 +136,6 @@ class Game{
                 img.style.display = 'block';
                 setTimeout( () => img.style.display = 'none', 1000);
                 input = e.results[Game.voiceCounter][0].transcript;
-                console.log(input);
                 let dir = Game.recognition.processInput(input);
                 this.main_obj.move(dir);
                 Game.voiceCounter++;
@@ -150,7 +149,6 @@ class Game{
             let doc_lives = document.getElementById('num_lives');
             for(let i = 1; i < this.objs.length; i++){
                 if(this.main_obj.collideWith(this.objs[i]) && this.objs[i].pos[1] <= 700){
-                    console.log(this.objs[i]);
                     if(this.objs[i] instanceof AppleObject){
                         this.lives++;
                         doc_lives.innerText = this.lives;
@@ -168,7 +166,7 @@ class Game{
                         },1000);
                         this.hideObject(this.objs[i]);
                     }else{
-                        console.log('hit');
+                        // console.log('hit');
                         Game.hit_pos = this.main_obj.pos;
                         Game.hit = true;
                         // let canvas = document.getElementById('canvas');
