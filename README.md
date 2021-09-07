@@ -1,5 +1,6 @@
 # JS-Project-Speech-Game
 
+Play Here!(https://lamjay415.github.io/JS-Project-Speech-Game "Hippo Run!")
 ![demo gif](demo.gif)
 
 ## Background
