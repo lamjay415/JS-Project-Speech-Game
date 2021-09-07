@@ -1,5 +1,5 @@
 # JS-Project-Speech-Game
-
+(https://i.gyazo.com/cf78d1931930da634f6bc8682c4ead51.mp4)
 ## Background
 The goal of this project is to utilize Javascript's Web Speech API to detect user inputs to give instructions to our APP. The user will have to enable mic access on their browser to play the game. The idea is have a dodging game where the player uses their voice to tell the character to move left, right, up, and down with an option to play using their keyboard.  
 
